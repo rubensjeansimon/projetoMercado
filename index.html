@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <title>Projeto Mercado</title>
+</head>
+<body>
+    <div class="container">
+	
+        <div class="row">
+        <form>
+            <fieldset>
+                <legend>Produto</legend>
+                <input type="text" class="form-control" name="" id="inpValor">
+        
+                <legend>Quantidade</legend>
+                <input type="number" class="form-control" id="inpQuant" name="">
+        <br>
+        <button type="button" id="btnComprar" class="btn btn-success">comprar</button>
+
+        <button type="button" id="btnList" class="btn btn-success">Ver a Lista dos Produtos</button>
+
+        <button type="button" id="btnRemove" class="btn btn-danger">Apagar a lista</button>
+            </fieldset>
+        </form>
+    
+        <hr>
+           <fieldset>
+        <legend>Lista de Produtos </legend>
+        <div class="itemlisst" id="itemlist"></div>
+           </fieldset>
+        </div>
+        </div>
+       
+            <script>
+        const inputValor = document.getElementById("inpValor");
+        const inputQuantidade = document.getElementById("inpQuant");
+        const btnList = document.getElementById("btnList");
+        const btnRemove = document.getElementById("btnRemove");
+
+        btnComprar.onclick = function () {
+            const item = inputValor.value;
+            const valor = inputQuantidade.value;
+            console.log(item);
+            console.log(valor);
+
+            if (item && valor){
+                localStorage.setItem(item,valor);
+                
+            }
+            
+        }
+
+        btnRemove.onclick = function(){
+           localStorage.clear(itemlist);
+           location.reload();
+
+        }
+
+       btnList.onclick = function() {
+        const item = inputValor.value;
+        const valor = inputQuantidade.value;
+        
+
+
+            if (item && valor){
+                localStorage.setItem(item,valor);
+                location.reload();
+            }
+            
+        }
+
+        for (let i = 0; i < localStorage.length; i++) {
+            const item = localStorage.key(i);
+            const valor = localStorage.getItem(item);
+
+            itemlist.innerHTML +=`${item}: ${valor}<br />`;
+            
+        }
+
+
+
+
+
+            </script>
+           
+
+
+
+
+</body>
+</html>
